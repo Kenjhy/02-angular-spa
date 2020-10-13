@@ -1,6 +1,7 @@
 //Modulos angular
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 //Rutas
 import { appRouting } from './app.routes';
@@ -15,6 +16,8 @@ import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { HeroesComponent } from './components/heroes/heroes.component';
 import { HeroeComponent } from './components/heroe/heroe.component';
+import { BuscadorComponent } from './components/buscador/buscador.component';
+import { HeroeTargetaComponent } from './components/heroe-targeta/heroe-targeta.component';
 
 
 @NgModule({
@@ -24,11 +27,14 @@ import { HeroeComponent } from './components/heroe/heroe.component';
     HomeComponent,
     AboutComponent,
     HeroesComponent,
-    HeroeComponent
+    HeroeComponent,
+    BuscadorComponent,
+    HeroeTargetaComponent
   ],
   imports: [
     BrowserModule,
-    appRouting
+    appRouting,
+    FormsModule
   ],
   providers: [
     HeroesService

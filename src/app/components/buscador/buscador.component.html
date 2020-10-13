@@ -1,0 +1,15 @@
+<h1>Buscador: <small>{{termino}}</small></h1>
+
+<div class="row animated fadeIn fast" *ngIf="heroesObjArr.length === 0">
+    <div class="col-md-12">
+        <div class="alert alert-info" role="alert">
+            Nowxiste termini: {{termino}}
+        </div>
+    </div>
+</div>
+
+<div class="card-columns">
+    <app-heroe-targeta *ngFor="let heroeObj of heroesObjArr; let i=index" 
+                        [heroeInput]="heroeObj" [index]="heroeObj.idx">
+    </app-heroe-targeta>
+</div>

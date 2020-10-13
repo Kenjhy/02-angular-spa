@@ -1,15 +1,26 @@
+<h1>Heroes<small>Marvel y DC</small></h1>
 <div class="card-columns">
-    <div class="card animated fadeIn fast" *ngFor="let heroe of heroes; let i=index">
-        <img class="card-img-top img-fluid" [src]="heroe.img" [alt]="heroe.nombre">
-        <div class="card-body">
-            <h4 class="card-title">{{ heroe.nombre }}</h4>
-            <p class="card-text"> {{ heroe.bio }} </p>
-            <p class="card-text"><small class="text-muted">{{ heroe.aparicion }}</small></p>
-
-            <button (click)="verHeroe(i)" type="button" class="btn btn-outline-primary btn-block">
-                Ver más...
-            </button>
-            <!-- <a [routerLink]="['/heroe',i]" class="btn btn-outline-primary">Ver más link...</a> -->
-        </div>
-    </div>
+    
+    <app-heroe-targeta (heroeSeleccionado)="verHeroe( $event)" 
+                        *ngFor="let heroeInterface of heroesInterface; let i=index"
+                        [heroeInput]="heroeInterface" [index]="i" >
+    </app-heroe-targeta>
+    
 </div>
+
+<!-- <ul class="nav nav-pills mb-3 navStyle" id="pills-tab" role="tablist">
+    <li class="nav-item" role="presentation" *ngFor="let resultado of resultadosModel; let i=index"
+        (click)="menu(resultado,i)">
+        <a routerLinkActive="active" type="button" [className]="i==indice ? 'nav-link active' : 'nav-link'"
+            id="pills-home-tab" data-toggle="pill" role="tab" aria-controls="pills-home"
+            aria-selected="true">{{resultado.corporacion}}</a>
+    </li>
+    <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+                aria-controls="pills-home" aria-selected="true">REPRESENTANTES ESTUDIANTES</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+                aria-controls="pills-profile" aria-selected="false">CONSEJO ACADEMICO</a>
+        </li>
+</ul> -->

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HeroeInterface } from '../interfaces/heroe.interface';
 
 @Injectable({
     providedIn: 'root'
@@ -6,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class HeroesService {
     
 
-    private heroes:Heroe[] = [
+    private heroesInterfaceArr:HeroeInterface[] = [
         {
           nombre: "Aquaman",
           bio: "El poder más reconocido de Aquaman es la capacidad telepática para comunicarse con la vida marina, la cual puede convocar a grandes distancias.",
@@ -62,17 +63,76 @@ export class HeroesService {
         console.log("Servicio listo para usarse")
     }
 
-    getHeroes():Heroe[]{
-        return this.heroes;
+    getHeroes():HeroeInterface[]{
+        return this.heroesInterfaceArr;
+    }
+
+    getHeroe(iDetalle:number){
+      return this.heroesInterfaceArr[iDetalle];
+    }
+
+    buscarHeroes(termino:string): HeroeInterface[]{
+      let heroesArr:HeroeInterface[] = [];
+      termino = termino.toLowerCase();
+      
+      for(let i = 0; i < this.heroesInterfaceArr.length; i++){
+        let heroe = this.heroesInterfaceArr[i];
+          let nombre = heroe.nombre.toLowerCase();
+          if(nombre.indexOf(termino)>=0){
+            heroe.idx = i;
+            heroesArr.push(heroe)
+          }
+    
+          console.log(heroe);
+          console.log(this.heroesInterfaceArr);
+        }
+
+      // for(let heroe of this.heroesInterfaceArr){
+      //   let nombre = heroe.nombre.toLowerCase();
+      //   if(nombre.indexOf(termino)>=0){
+      //     heroesArr.push(heroe)
+      //   }
+  
+      //   console.log(heroe);
+      //   console.log(this.heroesInterfaceArr);
+      // }
+      console.log(heroesArr);
+      return heroesArr;
     }
 }
 
 
-export interface Heroe{
-    nombre: string;
-    bio: string;
-    img: string;
-    aparicion: string;
-    casa: string;
-    idx?: number;
-  };
+// export interface Heroe{
+//     nombre: string;
+//     bio: string;
+//     img: string;
+//     aparicion: string;
+//     casa: string;
+//     idx?: number;
+// };
+
+// <div class="col mb-4">
+//                 <div class="card border-dark mb-3 text-center" style="max-width: 18rem;">
+//                     <div class="card-header bg-transparent border-success">
+//                         <div class="row no-gutters align-items-center">
+//                             <div class="col-auto">
+//                                 <h1 class="fas text-gray-300"><strong>#2</strong></h1>
+//                             </div>
+//                             <div class="col mr-2">
+//                                 <div class="h5 text-xs font-weight-bold text-danger text-uppercase mb-1">350</div>
+//                                 <div class="h9 mb-0 font-weight-bold text-gray-800">63.3%</div>
+//                             </div>
+
+//                         </div>
+//                     </div>
+//                     <img src="../../../../assets/images/usuario/usuario.png" class="card-img-top" alt="...">
+//                     <!-- <div class="card-body text-success">
+//                         <h5 class="card-title">Suc>cess card title</h5>
+//                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+//                             the card's content.</p>
+//                     </div> -->
+//                     <div class="card-footer cardFooter bg-transparent border-success">
+//                         <a href="#" class="btn btnCard">Go somewhere</a>
+//                     </div>
+//                 </div>
+//             </div>

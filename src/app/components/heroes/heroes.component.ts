@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HeroesService, Heroe } from '../../services/heroes.service';
+// import { HeroesService, Heroe } from '../../services/heroes.service';
+import { HeroesService} from '../../services/heroes.service';
 import { Router } from '@angular/router';
+import { HeroeInterface } from 'src/app/interfaces/heroe.interface';
 
 
 @Component({
@@ -9,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class HeroesComponent implements OnInit {
 
-  heroes:Heroe[] = [];
+  heroesInterface:HeroeInterface[] = [];
   
   //Recibe parameteos del servicio y otro ruta
   constructor(private _heroesService: HeroesService, private router:Router ){
@@ -19,7 +21,7 @@ export class HeroesComponent implements OnInit {
 
   ngOnInit() {
     console.log("ngOnInit")
-    this.heroes = this._heroesService.getHeroes();
+    this.heroesInterface = this._heroesService.getHeroes();
   }
   
   //Funcion click
@@ -28,6 +30,8 @@ export class HeroesComponent implements OnInit {
     this.router.navigate( ['/heroe',idx] );
   }
 
+
+  
 
    // @Input() heroe: any = {};
   // @Input() index: number;
